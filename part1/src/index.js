@@ -3,17 +3,27 @@ import ReactDOM from 'react-dom';
 
 const Statistics = (props) => {
     let values = props.values;
-    return (
-        <div>
-            <h1>statistics</h1>
-            <p>good {values.good}</p>
-            <p>neutral {values.neutral}</p>
-            <p>bad {values.bad}</p>
-            <p>all {values.all}</p>
-            <p>average {values.avg / values.all}</p>
-            <p>positive {(100  / values.good) * 100} %</p>
-        </div>
-    )
+
+    if (values.all <= 0) {
+        return (
+            <div>
+                <p>No feedback given</p>
+            </div>
+        )
+    }
+    else {
+        return (
+            <div>
+                <h1>statistics</h1>
+                <p>good {values.good}</p>
+                <p>neutral {values.neutral}</p>
+                <p>bad {values.bad}</p>
+                <p>all {values.all}</p>
+                <p>average {values.avg / values.all}</p>
+                <p>positive {(100  / values.good) * 100} %</p>
+            </div>
+        )
+    }
 }
 
 const App = () => {
