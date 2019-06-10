@@ -1,87 +1,29 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-const Statistics = (props) => {
-    let values = props.values;
+const App = (props) => {
+    const [selected, setSelected] = useState(0);
 
-    if (values.all <= 0) {
-        return (
-            <div>
-                <p>No feedback given</p>
-            </div>
-        )
-    }
-    else {
-        return (
-            <div>
-                <h1>statistics</h1>
-                <table>
-                    <tr>
-                        <td>good</td> <td>{values.good}</td>
-                    </tr>
-                    <tr>
-                        <td>neutral</td> <td>{values.neutral}</td>
-                    </tr>
-                    <tr>
-                        <td>bad</td> <td>{values.bad}</td>
-                    </tr>
-                    <tr>
-                        <td>all</td> <td>{values.all}</td>
-                    </tr>
-                    <tr>
-                        <td>average</td> <td>{values.avg / values.all}</td>
-                    </tr>
-                    <tr>
-                        <td>positive</td> <td>{(100  / values.good) * 100} %</td>
-                    </tr>
-                </table>
-            </div>
-        )
-    }
-}
-
-const Button = (props) => {
-    return (
-        <button onClick={props.handleClicks}>{props.text}</button>
-    )
-}
-
-const App = () => {
-    const[good, setGood] = useState(0);
-    const[neutral, setNeutral] = useState(0);
-    const[bad, setBad] = useState(0);
-
-    const goodScore= 1;
-    const neutralScore= 0;
-    const badScore= -1;    
-
-    const values = {
-        good: good,
-        neutral: neutral,
-        bad: bad,
-        all: good + neutral + bad,
-        avg: (good * goodScore) + (neutral * neutralScore) + (bad * badScore)
+    const nextAnecdote = () => {
+        let random = Math.floor(Math.random() * 5) + 1;
+        setSelected(random);
     }
 
-    const goodClicks = () => {
-        setGood(good + 1)
-    }
-    const neutralClicks = () => {
-        setNeutral(neutral + 1)
-    }
-    const badClicks = () => {
-        setBad(bad + 1)
-    }
- 
     return (
         <div>
-            <h1>give feedback</h1>
-            <Button text="good" handleClicks={goodClicks} />
-            <Button text="neutral" handleClicks={neutralClicks} />
-            <Button text="bad" handleClicks={badClicks} />
-            <Statistics values={values} />
+            <p>{props.anecdotes[selected]}</p>
+            <button onClick={nextAnecdote}>next anecdote</button>
         </div>
     )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const anecdotes = [
+    'If it hurts, do it more often',
+    'Adding manpower to a late software project makes it later!',
+    'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
+    'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
+    'Premature optimization is the root of all evil.',
+    'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
+  ]
+
+ ReactDOM.render(<App anecdotes={anecdotes} />, document.getElementById('root')) 
