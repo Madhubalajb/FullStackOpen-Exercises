@@ -4,7 +4,10 @@
 ## Directory Information
 ```
 /part0
+    Exercises for part 0 - Web Sequence Diagrams
+/part1
+    Exercises for part 1 - React application
 /part2
-/part2
+    Exercises for part 2 
 README.md
 ```
