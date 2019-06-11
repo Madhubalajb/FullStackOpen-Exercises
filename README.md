@@ -3,7 +3,7 @@
 
 ## Directory Information
 ```
-/part0
+**/part0**
     Exercises for part 0 - Web Sequence Diagrams
 /part1
     Exercises for part 1 - React application
