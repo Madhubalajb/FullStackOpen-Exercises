@@ -2,7 +2,7 @@
 > Coding exercises for the [FullStackOpen](https://fullstackopen.com/en) course - Deep Dive into Modern web Development
 
 ## Directory Information
-**
+
 ```
 /part0
     Exercises for part 0 - Web Sequence Diagrams
@@ -12,4 +12,3 @@
     Exercises for part 2 - React application
 README.md
 ```
-**
