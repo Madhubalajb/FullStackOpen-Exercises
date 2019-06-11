@@ -8,6 +8,6 @@
 /part1
     Exercises for part 1 - React application
 /part2
-    Exercises for part 2 
+    Exercises for part 2 - React application
 README.md
 ```
