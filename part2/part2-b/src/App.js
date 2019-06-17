@@ -36,9 +36,7 @@ const App = () => {
   const handleNewPerson = (event) => setNewPerson(event.target.value);
   const handleNewNumber = (event) => setNewNumber(event.target.value);
   const handleFilter = (event) => setFilter(event.target.value);
-  let filteredItems = persons.filter(
-    (contact) => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1
-  );
+  let filteredItems = persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
   const phoneBook = () => filteredItems.map(per => <p key={per.id}>{per.name} {per.number} </p>);
 
   return (
