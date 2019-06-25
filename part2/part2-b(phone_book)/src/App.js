@@ -3,12 +3,14 @@ import personServices from './services/phonebook';
 import Persons from './components/Persons';
 import PersonForm from './components/PersonForm';
 import Filter from './components/Filter';
+import Notification from './components/Notification'
 
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [newPerson, setNewPerson] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [filter, setFilter] = useState(''); 
+  const [mesaage, setMessage] = useState('')
 
   useEffect(() => {
      personServices.getData().then(persons => {setPersons(persons)})
@@ -25,6 +27,10 @@ const App = () => {
       }
       personServices.addData(person).then(returnedPersons => {
         setPersons(persons.concat(returnedPersons))
+        setMessage(`Added ${newPerson}`)
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000)
         setNewPerson('')
         setNewNumber('')
       })
@@ -35,6 +41,10 @@ const App = () => {
       const updateObject = { ...update, number: newNumber}
       personServices.updateData(updateObject.id, updateObject).then(updated => {
         setPersons(persons.map(pp => pp.id !== updateObject.id ? pp : updated))
+        setMessage(`Updated ${updateObject.name}`)
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000)
       })
     }
   }
@@ -43,6 +53,10 @@ const App = () => {
     personServices.deleteData(person.id)
     .then(deleted => {
       setPersons(persons.filter(per => per.id !== person.id))
+      setMessage(`Deleted ${person.name}`)
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
     })
     .catch(error => {
       console.log("fail")
@@ -59,12 +73,13 @@ const App = () => {
 
   return (
     <div>
+      <Notification msg = {mesaage} />
       <h2>Phonebook</h2>
-      <Filter filters={handleFilter} />
+      <Filter filters = {handleFilter} />
       <h2>add a new</h2>
-      <PersonForm add={addPerson} person={handleNewPerson} number={handleNewNumber} />
+      <PersonForm add = {addPerson} person = {handleNewPerson} number = {handleNewNumber} />
       <h2>Numbers</h2>
-      <Persons func={phoneBook()} />
+      <Persons func = {phoneBook()} />
     </div>
   )
 }
