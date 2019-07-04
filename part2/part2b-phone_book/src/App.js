@@ -57,7 +57,6 @@ const App = () => {
       })
       .catch(error => {
         showMessage(<Alert variant="warning">Person ${newPerson} has already been deleted</Alert>)
-        setPersons(persons.filter(per => per.id !== person.id))
       })
     }
   }
