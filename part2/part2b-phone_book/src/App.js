@@ -46,32 +46,36 @@ const App = () => {
       })
     }
     else {
-      window.confirm(`${newPerson} is already added to phonebook, replace the old number with the new one?`)
-      const update = persons.find(p => p.name === newPerson)
-      const updateObject = { ...update, number: newNumber}
+      let check = window.confirm(`${newPerson} is already added to phonebook, replace the old number with the new one?`)
+      if(check) {
+        const update = persons.find(p => p.name === newPerson)
+        const updateObject = { ...update, number: newNumber}
+        personServices
+        .updateData(updateObject.id, updateObject)
+        .then(updated => {
+          setPersons(persons.map(pp => pp.id !== updateObject.id ? pp : updated))
+          showMessage(<Alert variant="success">Updated contact {updateObject.name}</Alert>)
+        })
+        .catch(error => {
+          showMessage(<Alert variant="warning">Person ${newPerson} has already been deleted</Alert>)
+        })
+      }
+    }
+  }
+
+  const removePerson = (person) => {
+    let check = window.confirm(`Delete ${person.name} ?`)
+    if(check) {
       personServices
-      .updateData(updateObject.id, updateObject)
-      .then(updated => {
-        setPersons(persons.map(pp => pp.id !== updateObject.id ? pp : updated))
-        showMessage(<Alert variant="success">Updated contact {updateObject.name}</Alert>)
+      .deleteData(person.id)
+      .then(deleted => {
+        setPersons(persons.filter(per => per.id !== person.id))
+        showMessage(<Alert variant="success">Deleted contact {person.name}</Alert>)
       })
       .catch(error => {
         showMessage(<Alert variant="warning">Person ${newPerson} has already been deleted</Alert>)
       })
     }
-  }
-
-  const removePerson = (person) => {
-    window.confirm(`Delete ${person.name} ?`)
-    personServices
-    .deleteData(person.id)
-    .then(deleted => {
-      setPersons(persons.filter(per => per.id !== person.id))
-      showMessage(<Alert variant="success">Deleted contact {person.name}</Alert>)
-    })
-    .catch(error => {
-      showMessage(<Alert variant="warning">Person ${newPerson} has already been deleted</Alert>)
-    })
   }
 
   const handleNewPerson = (event) => setNewPerson(event.target.value)
