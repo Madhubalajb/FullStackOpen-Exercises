@@ -95,7 +95,7 @@ const App = () => {
     <center className = "container">
       <Notification msg = {message} />
       <div>
-        <h2>Phonebook - A DIY Project</h2>
+        <h2>Phonebook - made for fun to experiment some React knowledge</h2>
         <p>Developed with React, Express, MongoBB, ...</p>
         <Filter filters = {handleFilter} />
       </div>
