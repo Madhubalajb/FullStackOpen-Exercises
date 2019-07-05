@@ -4,7 +4,8 @@ import Persons from './components/Persons';
 import PersonForm from './components/PersonForm'
 import Filter from './components/Filter';
 import Notification from './components/Notification'
-import { Button, Card, Alert} from 'react-bootstrap'
+import { Button, Card, Alert, Badge} from 'react-bootstrap'
+import logo from './Images/phone-book.png'
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -95,8 +96,10 @@ const App = () => {
     <center className = "container">
       <Notification msg = {message} />
       <div>
-        <h2>Phonebook - made for fun to experiment some React knowledge</h2>
-        <p>Developed with React, Express, MongoBB, ...</p>
+        <img src={logo} alt="Logo" />
+        <h2>Phonebook App</h2>
+        <p>made for fun to experiment some React knowledge :)</p>
+        <p><Badge>React</Badge> + <Badge>Express</Badge> + <Badge>MongoDB</Badge> + <Badge>SASS</Badge> + <Badge>Bootstrap</Badge></p>
         <Filter filters = {handleFilter} />
       </div>
       <div className = "row main-row">

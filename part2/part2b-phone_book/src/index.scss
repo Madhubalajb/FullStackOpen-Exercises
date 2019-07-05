@@ -1,9 +1,21 @@
 .body {
+    background-color: lavender;
+    position: relative;
+    img {
+        width: 40px;
+        position: absolute;
+        left: 603px;
+        top: 11%;
+    }
     .alert {
         width: 40%;
     }
     .container {
         padding-top: 70px;
+        .badge {
+            background-color: cornflowerblue;
+            padding: 5px;
+        }
         .filter {
             margin-top: 5px;
         }
@@ -13,6 +25,8 @@
             .card {
                 margin-right: 30px;
                 margin-left: 30px;
+                background-color: darkslateblue;
+                color: aliceblue;
             }
             .col-sm-6 {
                 max-width: fit-content;
