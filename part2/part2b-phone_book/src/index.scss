@@ -1,14 +1,10 @@
 .body {
     background-color: lavender;
-    position: relative;
     img {
         width: 40px;
-        position: absolute;
-        left: 603px;
-        top: 11%;
     }
     .alert {
-        width: 40%;
+        width: fit-content;
     }
     .container {
         padding-top: 70px;
@@ -20,7 +16,7 @@
             margin-top: 5px;
         }
         .main-row {
-            margin-top: 70px;
+            margin-top: 60px;
             width: fit-content;
             .card {
                 margin-right: 30px;
@@ -52,7 +48,7 @@
 @media screen and (max-width: 479px) {
     .body {
         .alert {
-            width: 100%;
+            width: fit-content;
         }
         .container {
             .main-row {
@@ -67,7 +63,7 @@
 @media screen and (max-width: 768px) {
     .body {
         .alert {
-            width: 100%;
+            width: fit-content;
         }
         .container {
             .main-row {
@@ -75,8 +71,9 @@
                     padding: 5px 25px;
                 }
                 .card {
-                    margin-left: 5px;
-                    margin-right: 5px; 
+                    margin-left: 20px;
+                    margin-right: 20px; 
+                    margin-bottom: 25px;
                 }
             }
         }

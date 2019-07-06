@@ -96,8 +96,10 @@ const App = () => {
     <center className = "container">
       <Notification msg = {message} />
       <div>
-        <img src={logo} alt="Logo" />
-        <h2>Phonebook App</h2>
+        <div>
+          <img src={logo} alt="Logo" />
+          <h2>Phonebook App</h2>
+        </div>
         <p>made for fun to experiment some React knowledge :)</p>
         <p><Badge>React</Badge> + <Badge>Express</Badge> + <Badge>MongoDB</Badge> + <Badge>SASS</Badge> + <Badge>Bootstrap</Badge></p>
         <Filter filters = {handleFilter} />
@@ -108,7 +110,7 @@ const App = () => {
           <PersonForm add = {addPerson} person = {handleNewPerson} number = {handleNewNumber} />
         </Card>
         <Card className = "col-sm-6">
-          <h2>Numbers</h2>
+          <h2>Numbers ...</h2>
           <Persons func = {phoneBook()} />
         </Card>
       </div>
