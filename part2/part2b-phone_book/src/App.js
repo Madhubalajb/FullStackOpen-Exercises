@@ -114,7 +114,7 @@ const App = () => {
           <Persons func = {phoneBook()} />
         </Card>
       </div>
-      <p className="footer">designed & developed by <a href="https://madhubalajb.github.io/" target="_blank">Madhubala Jayakumaran</a> 
+      <p className="footer">designed & developed by <a href="https://madhubalajb.github.io/" rel="noopener noreferrer" target="_blank">Madhubala Jayakumaran</a> 
         <br/> On live since 28th June 2019</p>
     </center>
   )
