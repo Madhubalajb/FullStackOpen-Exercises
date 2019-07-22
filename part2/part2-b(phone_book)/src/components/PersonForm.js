@@ -1,14 +1,23 @@
-import React from 'react';
+import React from 'react'
+import { Button, Form, Col, Row } from 'react-bootstrap'
 
 const PersonForm = (props) => {
     return (
-        <form onSubmit={props.add}>
-            <div>name: <input onChange={props.person} required/> </div>
-            <div>number: <input onChange={props.number} required/></div>
-            <div>
-            <button type='submit'>add</button>
-            </div>
-      </form>
+        <Form onSubmit={props.add}>
+            <Row>
+                <Col>Name</Col>
+                <Col sm="8">
+                    <Form.Control onChange={props.person} placeholder="Contact Name" required />
+                </Col>
+            </Row>
+            <Row>
+                <Col>Number</Col>
+                <Col sm="8">
+                    <Form.Control onChange={props.number} placeholder="Phone Number" required />
+                </Col>
+            </Row>
+            <Button className='btn btn-sm' type='submit'>Add</Button>
+      </Form>
     )
 }
 

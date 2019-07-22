@@ -1,4 +1,5 @@
 import React from 'react';
+import { Alert } from 'react-bootstrap'
 
 const Notification = (props) => {
     if(props.msg === null) {
@@ -6,7 +7,7 @@ const Notification = (props) => {
     }
 
     return (
-        <p><b>{props.msg}</b></p>  
+        props.msg
     )
 }
 

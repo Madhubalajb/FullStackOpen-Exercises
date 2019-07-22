@@ -1,6 +1,5 @@
 import axios from 'axios';
-//const url = 'http://localhost:3001/persons';
-const url = 'https://limitless-falls-24071.herokuapp.com/api/persons'
+const url = '/api/persons'
 
 const getData = () => {
     const request = axios.get(url);
