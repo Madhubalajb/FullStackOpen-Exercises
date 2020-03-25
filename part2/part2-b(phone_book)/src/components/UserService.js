@@ -22,7 +22,7 @@ const Userservice = () => {
     const [password, setPassword] = useState('')
 
     const handleName = (event) => setName(event.target.value)
-    const handleUsername = (event) => setusername(event.target.value)
+    const handleUsername = (event) => setUsername(event.target.value)
     const handlePassword = (event) => setPassword(event.target.value)
 
     const handleLogin = async (event) => {
@@ -76,7 +76,7 @@ const Userservice = () => {
                 <LoginModal show={loginModal} close={handleLoginNoModal} username={handleUsername} pwd={handlePassword} login={handleLogin}/>
 
                 <Nav.Link onClick={handleSignupModal}>Signup</Nav.Link>
-                <SignupModal show={SignupModal} close={handleSignupNoModal} name={handleName} username={handleUsername} pwd={handlePassword} signup={handleSignup}/>
+                <SignupModal show={signupModal} close={handleSignupNoModal} name={handleName} username={handleUsername} pwd={handlePassword} signup={handleSignup}/>
             </div>
         )
     }

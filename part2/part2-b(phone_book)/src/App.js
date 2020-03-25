@@ -5,7 +5,7 @@ import Persons from './components/Persons';
 import PersonForm from './components/PersonForm'
 import Filter from './components/Filter';
 import Notification from './components/Notification'
-import Userservice from './components/UserService'
+import Navigation from './components/Navigation'
 import logo from './Images/phone-book.png'
 
 const App = () => {
@@ -95,6 +95,7 @@ const App = () => {
 
   return (
     <center className = "container">
+      <Navigation />
       <Notification msg = {message} />
       <div>
         <div>
