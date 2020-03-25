@@ -122,7 +122,7 @@ const App = () => {
       <div className = "row main-row">
         <Card className = "col-sm-6">
           <h2>Add a contact</h2>
-          <PersonForm add = {addPerson} person = {handleNewPerson} number = {handleNewNumber} />
+          <PersonForm add = {addPerson} person = {handleNewPerson} number = {handleNewNumber} newNumber={newNumber} newPerson={newPerson}/>
         </Card>
         <Card className = "col-sm-6">
           <h2>Contacts</h2>
