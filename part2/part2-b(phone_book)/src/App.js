@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Button, Card, Alert, Badge} from 'react-bootstrap'
+import { Card, Alert, Badge} from 'react-bootstrap'
 import personServices from './services/phoneService'
 import Persons from './components/Persons';
 import PersonForm from './components/PersonForm'
@@ -9,14 +9,27 @@ import Navigation from './components/Navigation'
 import logo from './Images/phone-book.png'
 
 const App = () => {
-  const [persons, setPersons] = useState([]);
-  const [newPerson, setNewPerson] = useState('');
-  const [newNumber, setNewNumber] = useState('');
-  const [filter, setFilter] = useState(''); 
+  const [user, setUser] = useState('')
+  const [persons, setPersons] = useState([])
+  const [newPerson, setNewPerson] = useState('')
+  const [newNumber, setNewNumber] = useState('')
+  const [filter, setFilter] = useState('')
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-     personServices.getData().then(persons => setPersons(persons))
+    const loggedUser = window.localStorage.getItem('logged_PhoneApp_User')
+    if(loggedUser) {
+        const user = JSON.parse(loggedUser)
+        setUser(user)
+    }
+  }, []) 
+
+  useEffect(() => {
+    personServices.getData()
+    .then(persons => {
+      const foo = persons.filter(person => person.user.username === user.username)
+      setPersons(foo)
+    })
   }, [])
 
   const showMessage = (message) => {
@@ -45,6 +58,8 @@ const App = () => {
       })
       .catch(error => {
         showMessage(<Alert variant="warning">Person validation failed: Name & Number should be a length of minimum 3, 8 respectively. </Alert>)
+        setNewPerson('')
+        setNewNumber('')
       })
     }
     else {
@@ -57,9 +72,13 @@ const App = () => {
         .then(updated => {
           setPersons(persons.map(pp => pp.id !== updateObject.id ? pp : updated))
           showMessage(<Alert variant="success">Updated contact {updateObject.name}</Alert>)
+          setNewNumber('')
+          setNewPerson('')
         })
         .catch(error => {
           showMessage(<Alert variant="warning">Person ${newPerson} has already been deleted</Alert>)
+          setNewPerson('')
+          setNewNumber('')
         })
       }
     }
@@ -88,11 +107,6 @@ const App = () => {
 
   let filteredItems = persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
 
-  const phoneBook  = () => filteredItems.map(per => 
-      <p key={per.id}>
-        {per.name}: {per.number} <Button className = "btn btn-sm" onClick={() => {removePerson(per)}}>Delete</Button>
-      </p>);
-
   return (
     <center className = "container">
       <Navigation />
@@ -111,8 +125,8 @@ const App = () => {
           <PersonForm add = {addPerson} person = {handleNewPerson} number = {handleNewNumber} />
         </Card>
         <Card className = "col-sm-6">
-          <h2>Numbers ...</h2>
-          <Persons func = {phoneBook()} />
+          <h2>Contacts</h2>
+          <Persons filteredItems={filteredItems} persons={persons} remove={removePerson} />
         </Card>
       </div>
       <p className="footer">designed & developed by <a href="https://madhubalajb.github.io/" rel="noopener noreferrer" target="_blank">madhubala jayakumaran</a> 

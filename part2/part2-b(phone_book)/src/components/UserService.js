@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Nav} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import LoginModal from './Login'
@@ -20,6 +20,15 @@ const Userservice = () => {
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+    useEffect(() => {
+        const loggedUser = window.localStorage.getItem('logged_PhoneApp_User')
+        if(loggedUser) {
+            const user = JSON.parse(loggedUser)
+            setUser(user)
+            phoneService.setToken(user.token)
+        }
+    }, []) 
 
     const handleName = (event) => setName(event.target.value)
     const handleUsername = (event) => setUsername(event.target.value)
