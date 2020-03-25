@@ -36,11 +36,13 @@ const Userservice = () => {
             setUser(user)
             setUsername('')
             setPassword('')
+            handleLoginNoModal()
         })
         .catch(error => {
             setUser('')
             setUsername('')
             setPassword('')
+            handleLoginNoModal()
         })
     }
 
@@ -54,12 +56,14 @@ const Userservice = () => {
             setName('')
             setUsername('')
             setPassword('')
+            handleSignupNoModal()
         })
         .catch(error => {
             setUser('')
             setName('')
             setUsername('')
             setPassword('')
+            handleSignupNoModal()
         })
     }
 
