@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import personServices from './services/phonebook'
+import { Button, Card, Alert, Badge} from 'react-bootstrap'
+import personServices from './services/phoneService'
 import Persons from './components/Persons';
 import PersonForm from './components/PersonForm'
 import Filter from './components/Filter';
 import Notification from './components/Notification'
-import { Button, Card, Alert, Badge} from 'react-bootstrap'
+import Userservice from './components/UserService'
 import logo from './Images/phone-book.png'
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-     personServices.getData().then(persons => {setPersons(persons)})
+     personServices.getData().then(persons => setPersons(persons))
   }, [])
 
   const showMessage = (message) => {
@@ -47,7 +48,7 @@ const App = () => {
       })
     }
     else {
-      let check = window.confirm(`${newPerson} is already added to phonebook, replace the old number with the new one?`)
+      let check = window.confirm(`${newPerson} is already exists, do you want to replace the number?`)
       if(check) {
         const update = persons.find(p => p.name === newPerson)
         const updateObject = { ...update, number: newNumber}
@@ -65,7 +66,7 @@ const App = () => {
   }
 
   const removePerson = (person) => {
-    let check = window.confirm(`Delete ${person.name} ?`)
+    let check = window.confirm(`Wanna delete ${person.name}?`)
     if(check) {
       personServices
       .deleteData(person.id)
@@ -87,7 +88,7 @@ const App = () => {
 
   let filteredItems = persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
 
-  const phoneBook = () => filteredItems.map(per => 
+  const phoneBook  = () => filteredItems.map(per => 
       <p key={per.id}>
         {per.name}: {per.number} <Button className = "btn btn-sm" onClick={() => {removePerson(per)}}>Delete</Button>
       </p>);
