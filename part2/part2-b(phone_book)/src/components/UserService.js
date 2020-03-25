@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {Nav} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
 import LoginModal from './Login'
 import SignupModal from './Signup'
 import loginService from '../services/login'
