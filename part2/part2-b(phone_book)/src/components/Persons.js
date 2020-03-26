@@ -10,7 +10,7 @@ const Persons = (props) => {
         </p>)
   
     return (
-        <div>{phoneBook}</div>
+        <div>{phoneBook()}</div>
     )
 }
 
