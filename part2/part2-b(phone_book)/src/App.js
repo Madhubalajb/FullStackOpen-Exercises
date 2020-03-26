@@ -18,14 +18,10 @@ const App = () => {
 
   useEffect(() => {
     const loggedUser = window.localStorage.getItem('logged_PhoneApp_User')
-    if(loggedUser) {
-      phoneService.getData()
-      .then(persons => setPersons(persons.filter(person => person.user === JSON.parse(loggedUser).id)))
-    }
-    else {
-      setPersons([])
-      setNewNumber(JSON.parse(loggedUser).id)
-    }
+    setNewNumber(JSON.parse(loggedUser).id)
+    phoneService.getData()
+    .then(persons => setPersons(persons))
+    setNewPerson(persons[0].user)
   }, [])
 
   const showMessage = (message) => {
