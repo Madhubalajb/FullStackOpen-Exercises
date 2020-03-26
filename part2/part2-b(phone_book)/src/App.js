@@ -27,8 +27,7 @@ const App = () => {
   useEffect(() => {
     personServices.getData()
     .then(persons => {
-      const foo = persons.filter(person => person.user.username === user.username)
-      setPersons(foo)
+      setPersons(persons.filter(person => person.user === user.id))
     })
   }, [])
 
