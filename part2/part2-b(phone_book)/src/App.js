@@ -23,7 +23,7 @@ const App = () => {
       .then(persons => setPersons(persons.filter(person => person.user.id === JSON.parse(loggedUser).id)))
     }
     else {
-      setNewNumber(JSON.parse(loggedUser).id)
+      setNewNumber('none')
     }
   }, [])
 
