@@ -22,6 +22,9 @@ const App = () => {
         const user = JSON.parse(loggedUser)
         setUser(user)
     }
+    else {
+      setUser('')
+    }
   }, []) 
 
   useEffect(() => {
