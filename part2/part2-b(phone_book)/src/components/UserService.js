@@ -52,6 +52,7 @@ const Userservice = () => {
             setPassword('')
             handleLoginNoModal()
         })
+        window.location.reload(false)
     }
 
     const handleSignup = async (event) => {
@@ -72,6 +73,7 @@ const Userservice = () => {
         setUser('')
         window.localStorage.removeItem('logged_PhoneApp_User')
         phoneService.setToken('')
+        window.location.reload(false)
     }
 
     if(user === '') {

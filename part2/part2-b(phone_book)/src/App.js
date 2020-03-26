@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Card, Alert, Badge} from 'react-bootstrap'
+import {Card, Alert, Badge} from 'react-bootstrap'
 import personServices from './services/phoneService'
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
@@ -20,9 +20,6 @@ const App = () => {
     if(loggedUser) {
       personServices.getData()
       .then(persons => setPersons(persons.filter(person => person.user.id === JSON.parse(loggedUser).id)))
-    }
-    else {
-      setNewNumber('none')
     }
   }, [])
 
