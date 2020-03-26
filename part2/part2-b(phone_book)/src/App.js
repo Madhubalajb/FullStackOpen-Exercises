@@ -7,9 +7,9 @@ import Filter from './components/Filter';
 import Notification from './components/Notification'
 import Navigation from './components/Navigation'
 import logo from './Images/phone-book.png'
+import phoneService from './services/phoneService';
 
 const App = () => {
-  const [user, setUser] = useState('')
   const [persons, setPersons] = useState([])
   const [newPerson, setNewPerson] = useState('')
   const [newNumber, setNewNumber] = useState('')
@@ -19,19 +19,13 @@ const App = () => {
   useEffect(() => {
     const loggedUser = window.localStorage.getItem('logged_PhoneApp_User')
     if(loggedUser) {
-        const user = JSON.parse(loggedUser)
-        setUser(user)
+      phoneService.getData()
+      .then(persons => setPersons(persons.filter(person => person.user == JSON.parse(loggedUser).id)))
     }
     else {
-      setUser('')
+      setPersons('')
+      setFilter("fuck")
     }
-  }, []) 
-
-  useEffect(() => {
-    personServices.getData()
-    .then(persons => {
-      setPersons(persons.filter(person => person.user === user.id))
-    })
   }, [])
 
   const showMessage = (message) => {

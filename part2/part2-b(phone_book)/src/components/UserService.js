@@ -34,7 +34,6 @@ const Userservice = () => {
     const handlePassword = (event) => setPassword(event.target.value)
 
     const handleLogin = async (event) => {
-        event.preventDefault()
         await loginService.login({
             username, password
         })
