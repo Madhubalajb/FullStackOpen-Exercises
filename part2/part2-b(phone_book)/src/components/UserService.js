@@ -60,13 +60,6 @@ const Userservice = () => {
             name, username, password
         })
         .then(savedUser => {
-            setUser(savedUser)
-            setName('')
-            setUsername('')
-            setPassword('')
-            handleSignupNoModal()
-        })
-        .catch(error => {
             setUser('')
             setName('')
             setUsername('')
