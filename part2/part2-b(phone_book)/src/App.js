@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { Card, Alert, Badge} from 'react-bootstrap'
 import personServices from './services/phoneService'
-import Persons from './components/Persons';
+import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
-import Filter from './components/Filter';
+import Filter from './components/Filter'
 import Notification from './components/Notification'
 import Navigation from './components/Navigation'
 import logo from './Images/phone-book.png'
-import phoneService from './services/phoneService';
+import phoneService from './services/phoneService'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -20,11 +20,10 @@ const App = () => {
     const loggedUser = window.localStorage.getItem('logged_PhoneApp_User')
     if(loggedUser) {
       phoneService.getData()
-      .then(persons => setPersons(persons.filter(person => person.user == JSON.parse(loggedUser).id)))
+      .then(persons => setPersons(persons.filter(person => person.user === JSON.parse(loggedUser).id)))
     }
     else {
-      setPersons('')
-      setFilter("fuck")
+      setPersons([])
     }
   }, [])
 
@@ -101,7 +100,7 @@ const App = () => {
 
   const handleFilter = (event) => setFilter(event.target.value)
 
-  let filteredItems = (persons === []) ? '' : persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
+  let filteredItems = persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
 
   return (
     <center className = "container">
@@ -122,7 +121,7 @@ const App = () => {
         </Card>
         <Card className = "col-sm-6">
           <h2>Contacts</h2>
-          <Persons filteredItems={filteredItems} persons={persons} remove={removePerson} />
+          <Persons filteredItems={filteredItems} remove={removePerson} />
         </Card>
       </div>
       <p className="footer">designed & developed by <a href="https://madhubalajb.github.io/" rel="noopener noreferrer" target="_blank">madhubala jayakumaran</a> 
