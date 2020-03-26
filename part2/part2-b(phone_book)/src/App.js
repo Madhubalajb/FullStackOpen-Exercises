@@ -101,7 +101,7 @@ const App = () => {
 
   const handleFilter = (event) => setFilter(event.target.value)
 
-  let filteredItems = persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
+  let filteredItems = (persons === []) ? '' : persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
 
   return (
     <center className = "container">
