@@ -24,6 +24,7 @@ const App = () => {
     }
     else {
       setPersons([])
+      setNewNumber(loggedUser)
     }
   }, [])
 
