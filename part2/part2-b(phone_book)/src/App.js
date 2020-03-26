@@ -7,7 +7,6 @@ import Filter from './components/Filter'
 import Notification from './components/Notification'
 import Navigation from './components/Navigation'
 import logo from './Images/phone-book.png'
-import phoneService from './services/phoneService'
 
 const App = () => {
   const [persons, setPersons] = useState([])
@@ -19,7 +18,7 @@ const App = () => {
   useEffect(() => {
     const loggedUser = window.localStorage.getItem('logged_PhoneApp_User')
     if(loggedUser) {
-      phoneService.getData()
+      personServices.getData()
       .then(persons => setPersons(persons.filter(person => person.user.id === JSON.parse(loggedUser).id)))
     }
     else {
