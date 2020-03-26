@@ -24,7 +24,7 @@ const App = () => {
     }
     else {
       setPersons([])
-      setNewNumber(loggedUser)
+      setNewNumber(JSON.parse(loggedUser).id)
     }
   }, [])
 
