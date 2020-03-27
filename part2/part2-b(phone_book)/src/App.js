@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {Card, Alert, Badge} from 'react-bootstrap'
+import {Card, Alert, Badge, Row, Col} from 'react-bootstrap'
 import personServices from './services/phoneService'
 import Persons from './components/Persons'
 import PersonForm from './components/PersonForm'
@@ -102,6 +102,7 @@ const App = () => {
     <center className = "container">
       <Navigation />
       <Notification msg = {message} />
+
       <div>
         <div>
           <img src={logo} alt="Logo" />
@@ -110,16 +111,22 @@ const App = () => {
         <p><Badge>React JS</Badge> + <Badge>Node JS</Badge> + <Badge>REST API</Badge> + <Badge>Express</Badge> + <Badge>MongoDB</Badge> + <Badge>SASS</Badge> + <Badge>Bootstrap</Badge></p>
         <Filter filters = {handleFilter} />
       </div>
+
       <div className = "row main-row">
         <Card className = "col-sm-6">
           <h2>Add a contact</h2>
           <PersonForm add = {addPerson} person = {handleNewPerson} number = {handleNewNumber} newNumber={newNumber} newPerson={newPerson}/>
         </Card>
+
         <Card className = "col-sm-6">
-          <h2>Contacts</h2>
+          <Row>
+            <Col><h2>Contacts</h2></Col>
+            <Col><i className="material-icons">contact_phone</i></Col>
+          </Row>
           <Persons filteredItems={filteredItems} remove={removePerson} />
         </Card>
       </div>
+
       <p className="footer">designed & developed by <a href="https://madhubalajb.github.io/" rel="noopener noreferrer" target="_blank">madhubala jayakumaran</a> 
         <br/> On live since 28th June 2019</p>
     </center>
