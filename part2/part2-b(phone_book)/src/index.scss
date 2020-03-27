@@ -6,6 +6,14 @@
     .alert {
         width: fit-content;
     }
+    .navbar {
+        .navbar-brand {
+            .house {
+                font-size: 30px;
+                color: darkslateblue;
+            }
+        }
+    }
     .material-icons {
         font-family: 'Material Icons';
         font-weight: normal;
@@ -60,6 +68,11 @@
                     padding-top: 5px;
                 }
             }
+            .col-sm-1 {
+                i {
+                    padding-top: 19px;
+                }
+            }
             .col-sm-6 {
                 max-width: fit-content;
                 padding: 10px 35px;
@@ -67,7 +80,7 @@
                     padding: 10px;
                 }
                 .btn {
-                    margin: 5px;
+                    margin: 10px;
                 }
             }
         }
