@@ -119,7 +119,7 @@ const Home = () => {
             <Col className="col-sm-10"><h2>Contacts</h2></Col>
             <Col className="col-sm-1"><i className="material-icons">contact_phone</i></Col>
         </Row>
-        <Persons filteredItems={filteredItems} remove={removePerson} />
+        <Persons filteredItems={filteredItems} remove={removePerson()} />
         </Card>
     </div>
     </center>
