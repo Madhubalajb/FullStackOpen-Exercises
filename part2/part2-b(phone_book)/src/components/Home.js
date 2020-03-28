@@ -102,8 +102,8 @@ const Home = () => {
     <Notification msg = {message} />
 
     <div>
-        <img src={logo} alt="Logo" />
-        <h2>Phonebook App</h2>
+        <img className="phonebook_logo" src={logo} alt="Phonebook Logo" />
+        <h2>Phonebook</h2>
         <Filter filters = {handleFilter} />
     </div>
 

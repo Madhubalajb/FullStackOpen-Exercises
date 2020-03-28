@@ -1,6 +1,6 @@
 .body {
     background-color: lavender;
-    img {
+    .phonebook_logo {
         width: 40px;
     }
     .alert {
@@ -19,6 +19,29 @@
                 font-size: 30px;
                 color: darkslateblue;
             }
+        }
+    }
+    .logos {
+        .node{
+            img {
+                width: 160px;
+            }
+        }
+        .react {
+            img {
+                width: 120px;
+            }
+        }
+        .mongodb {
+            img {
+                width: 55px;
+                margin: 0 10px;
+            }
+        }
+        .plus {
+            margin: 0 20px;
+            font-size: 25px;
+            font-weight: 500;
         }
     }
     .material-icons {
@@ -46,7 +69,7 @@
         font-feature-settings: 'liga';
       }
     .container {
-        padding-top: 70px;
+        padding-top: 110px;
         .badge {
             background-color: cornflowerblue;
             padding: 5px;
@@ -90,9 +113,22 @@
     h2 {
         padding: 10px;
     }
+    .stack {
+        margin-top: 60px;
+    }
+    .tech {
+        padding: 5px;
+        ::before {
+            content: "▹";
+            color: rgb(100, 255, 218);
+            font-size: 14px;
+            line-height: 12px;
+        }
+    }
     .footer {
-        margin-top: 70px;
         vertical-align: bottom;
+        margin-top: 125px;
+        font-size: 1.1rem;
     }
 }
 
