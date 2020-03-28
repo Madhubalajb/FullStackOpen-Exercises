@@ -6,9 +6,9 @@ const Persons = (props) => {
 
     const phoneBook  = () => filteredItems.map(per => { 
         return (
-        <div key={per.id}>
+        <div key={per.id} className="contact">
             <i className="material-icons">assignment_ind</i> 
-            {per.name} : {per.number} <i className="material-icons" onClick={() => props.removePerson}>delete</i>
+            {per.name} : {per.number} <i className="material-icons delete" onClick={() => props.removePerson}>delete</i>
         </div>
         )
     })

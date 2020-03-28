@@ -6,6 +6,13 @@
     .alert {
         width: fit-content;
     }
+    .delete {
+        cursor: pointer;
+    }
+    .contact {
+        display: flex;
+        padding: 5px;
+    }
     .navbar {
         .navbar-brand {
             .house {
@@ -62,6 +69,9 @@
                 margin-left: 30px;
                 background-color: darkslateblue;
                 color: aliceblue;
+                input {
+                    padding-bottom: 5px;
+                }
             }
             .col-sm-2 {
                 i {
@@ -76,9 +86,6 @@
             .col-sm-6 {
                 max-width: fit-content;
                 padding: 10px 35px;
-                .row {
-                    padding: 10px;
-                }
                 .btn {
                     margin: 10px;
                 }
