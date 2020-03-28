@@ -14,6 +14,16 @@ $Navy-Blue: #003B73;
     .contact {
         display: flex;
         padding: 5px;
+        .person {
+            font-size: 20px;
+            line-height: 1.2;
+        }
+        .name {
+            margin: 0 5px;
+        }
+        .number {
+            margin: 0 10px;
+        }
     }
     .navbar {
         .navbar-brand {
