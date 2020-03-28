@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import UserService from './UserService'
 
 const Navigation = () => {
@@ -13,7 +14,7 @@ const Navigation = () => {
             
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto">
-                    <Nav.Link href="/about">about</Nav.Link>
+                    <Nav.Link href="/about"><Link to="/about">about</Link></Nav.Link>
                     <UserService />
                 </Nav>
             </Navbar.Collapse>

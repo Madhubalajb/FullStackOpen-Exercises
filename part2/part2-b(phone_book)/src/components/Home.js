@@ -115,7 +115,7 @@ const Home = () => {
 
         <Card className = "col-sm-6">
         <Row>
-            <Col className="col-sm-10"><h2>Contacts</h2></Col>
+            <Col><h2>Contacts</h2></Col>
         </Row>
         <Persons filteredItems={filteredItems} remove={removePerson} />
         </Card>
