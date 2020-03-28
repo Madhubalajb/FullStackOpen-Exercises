@@ -114,16 +114,16 @@
         padding: 10px;
     }
     .stack {
-        margin-top: 60px;
+        margin-top: 40px;
+        list-style: none;
+        text-align: justify;
+        display: inline-block;
     }
-    .tech {
-        padding: 5px;
-        ::before {
-            content: "▹";
-            color: rgb(100, 255, 218);
-            font-size: 14px;
-            line-height: 12px;
-        }
+    .tech::before {
+        content: "▹";
+        color: #673AB7;
+        font-size: 18px;
+        line-height: 35px;
     }
     .footer {
         vertical-align: bottom;

@@ -23,12 +23,12 @@ const About = () => {
                         <img src={mongodb} alt="Mongodb" />
                     </span>
                 </div>
-                <ul className="stack">
+                <ol className="stack">
                     <li className="tech">Express</li>
-                    <li className="tech">REST Api</li>
+                    <li className="tech">REST API</li>
                     <li className="tech">SASS</li>
                     <li className="tech">Bootstrap</li>
-                </ul>
+                </ol>
             </div>
             <p className="footer">designed & developed by <a href="https://madhubalajb.github.io/" rel="noopener noreferrer" target="_blank">madhubala jayakumaran</a></p>
         </center>
