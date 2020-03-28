@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Card, Alert, Row, Col } from 'react-bootstrap'
 import logo from '../Images/phone-book.png'
-import About from './About'
 import Filter from './Filter'
 import Persons from './Persons'
 import PersonForm from './PersonForm'
@@ -119,7 +118,7 @@ const Home = () => {
             <Col className="col-sm-10"><h2>Contacts</h2></Col>
             <Col className="col-sm-1"><i className="material-icons">contact_phone</i></Col>
         </Row>
-        <Persons filteredItems={filteredItems} remove={removePerson()} />
+        <Persons filteredItems={filteredItems} remove={removePerson} />
         </Card>
     </div>
     </center>
