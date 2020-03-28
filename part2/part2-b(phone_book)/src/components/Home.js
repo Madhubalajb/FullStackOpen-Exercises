@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Card, Alert, Row, Col } from 'react-bootstrap'
+import { Card, Row, Col } from 'react-bootstrap'
 import logo from '../Images/phone-book.png'
 import Filter from './Filter'
 import Persons from './Persons'
@@ -42,12 +42,12 @@ const Home = () => {
       .addData(person)
       .then(returnedPersons => {
         setPersons(persons.concat(returnedPersons))
-        showMessage(<Alert variant="success">Added contact {newPerson}</Alert>)
+        showMessage(<div id="snackbar">Added contact {newPerson}</div>)
         setNewPerson('')
         setNewNumber('')
       })
       .catch(error => {
-        showMessage(<Alert variant="warning">Person validation failed: Name & Number should be a length of minimum 3, 8 respectively. </Alert>)
+        showMessage(<div id="snackbar">Person validation failed: Name & Number should be a length of minimum 3, 8 respectively. </div>)
         setNewPerson('')
         setNewNumber('')
       })
@@ -61,12 +61,12 @@ const Home = () => {
         .updateData(updateObject.id, updateObject)
         .then(updated => {
           setPersons(persons.map(pp => pp.id !== updateObject.id ? pp : updated))
-          showMessage(<Alert variant="success">Updated contact {updateObject.name}</Alert>)
+          showMessage(<div id="snackbar">Updated contact {updateObject.name}</div>)
           setNewNumber('')
           setNewPerson('')
         })
         .catch(error => {
-          showMessage(<Alert variant="warning">Person ${newPerson} has already been deleted</Alert>)
+          showMessage(<div id="snackbar">Person {newPerson} has already been deleted</div>)
           setNewPerson('')
           setNewNumber('')
         })
@@ -81,10 +81,10 @@ const Home = () => {
       .deleteData(person.id)
       .then(deleted => {
         setPersons(persons.filter(per => per.id !== person.id))
-        showMessage(<Alert variant="success">Deleted contact {person.name}</Alert>)
+        showMessage(<div id="snackbar">Deleted contact {person.name}</div>)
       })
       .catch(error => {
-        showMessage(<Alert variant="warning">Person ${newPerson} has already been deleted</Alert>)
+        showMessage(<div id="snackbar">Person {newPerson} has already been deleted</div>)
       })
     }
   }

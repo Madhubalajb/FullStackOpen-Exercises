@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Nav} from 'react-bootstrap'
 import LoginModal from './Login'
 import SignupModal from './Signup'
+import Notification from './Notification'
 import loginService from '../services/login'
 import signupService from '../services/signup'
 import phoneService from '../services/phoneService'
@@ -19,6 +20,7 @@ const Userservice = () => {
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [message, setMessage] = useState('')
 
     useEffect(() => {
         const loggedUser = window.localStorage.getItem('logged_PhoneApp_User')
@@ -28,6 +30,13 @@ const Userservice = () => {
             phoneService.setToken(user.token)
         }
     }, []) 
+
+    const showMessage = (message) => {
+        setMessage(message)
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000)
+      }
 
     const handleName = (event) => setName(event.target.value)
     const handleUsername = (event) => setUsername(event.target.value)
@@ -45,12 +54,14 @@ const Userservice = () => {
             setUsername('')
             setPassword('')
             handleLoginNoModal()
+            showMessage(<div id="snackbar">Hi {user.username} :)</div>)
         })
         .catch(error => {
             setUser('')
             setUsername('')
             setPassword('')
             handleLoginNoModal()
+            showMessage(<div id="snackbar">Sorry {user.username} :(</div>)
         })
         window.location.reload(false)
     }
@@ -66,6 +77,7 @@ const Userservice = () => {
             setUsername('')
             setPassword('')
             handleSignupNoModal()
+            showMessage(<div id="snackbar">User {savedUser.username} added :)</div>)
         })
     }
 
@@ -79,6 +91,7 @@ const Userservice = () => {
     if(user === '') {
         return (
             <div>
+                <Notification msg = {message} />
                 <Nav.Link onClick={handleLoginModal}>Login</Nav.Link>
                 <LoginModal show={loginModal} close={handleLoginNoModal} username={handleUsername} pwd={handlePassword} login={handleLogin}/>
 
@@ -90,6 +103,7 @@ const Userservice = () => {
     else {
         return (
             <div>
+                <Notification msg = {message} />
                 <Nav.Link onClick={logout}>Logout</Nav.Link>
             </div>
         )

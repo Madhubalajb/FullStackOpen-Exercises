@@ -1,3 +1,4 @@
+$Navy-Blue: #003B73;
 .body {
     background-color: lavender;
     .phonebook_logo {
@@ -8,6 +9,7 @@
     }
     .delete {
         cursor: pointer;
+        color: #007bff;
     }
     .contact {
         display: flex;
@@ -68,6 +70,38 @@
         /* Support for IE. */
         font-feature-settings: 'liga';
       }
+      #snackbar {
+        visibility: visible;
+        min-width: 250px;
+        background-color: $Navy-Blue;
+        color: white;
+        text-align: center;
+        border-radius: 2px;
+        position: fixed;
+        padding: 16px;
+        margin-left: -125px;
+        left: 50%;
+        bottom: 30px;
+        z-index: 1;
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 0.25s;
+        animation: fadein 0.5s, fadeout 0.5s 0.25s;
+    }
+    @-webkit-keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+    @keyframes fadein {
+        from {bottom: 0; opacity: 0;}
+        to {bottom: 30px; opacity: 1;}
+    }
+    @-webkit-keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+    }
+    @keyframes fadeout {
+        from {bottom: 30px; opacity: 1;}
+        to {bottom: 0; opacity: 0;}
+    }
     .container {
         padding-top: 110px;
         .badge {
