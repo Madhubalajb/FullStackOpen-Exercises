@@ -14,7 +14,7 @@ const Navigation = () => {
             
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto">
-                    <Nav.Link><Link to="/about">about</Link></Nav.Link>
+                    <Link to="/about">about</Link>
                     <UserService />
                 </Nav>
             </Navbar.Collapse>

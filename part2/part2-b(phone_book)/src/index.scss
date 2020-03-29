@@ -33,6 +33,11 @@ $Navy-Blue: #003B73;
                 color: darkslateblue;
             }
         }
+        .nav-link {
+            display: inline-block;
+            color: #1A237E;
+            font-weight: 500;
+        }
     }
     .logos {
         .node{
@@ -105,8 +110,11 @@ $Navy-Blue: #003B73;
         to {bottom: 0; opacity: 0;}
     }
     .none {
-        font-size: 14px;
-        width: 185px;
+        padding: 20px 0;
+        p {
+            font-size: 14px;
+            width: 185px;
+        }
     }
     .container {
         padding-top: 110px;

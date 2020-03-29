@@ -15,9 +15,9 @@ const Persons = (props) => {
     
     if (filteredItems.length === 0) {
         return (
-            <div>
+            <div className="none">
                 <i className="material-icons">call_end</i>
-                <p className="none">None, create some by logging In / Signing Up...</p>
+                <p>create some by logging in / Signing up...</p>
             </div>
         )
     }
