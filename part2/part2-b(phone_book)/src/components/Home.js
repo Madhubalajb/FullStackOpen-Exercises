@@ -34,19 +34,24 @@ const Home = () => {
     setNewNumber('')
   }
 
-  const allZeros = (num) => {
-    const number = String(num)
-    let count = 0
-    for (let i = 0; i < number.length; i++) {
-      if(number[i] === '0') 
-        count += 1
+  const validateNumber = (num) => {
+    if(typeof(num) === 'number') {
+      const number = String(num)
+      let count = 0
+      for (let i = 0; i < number.length; i++) {
+        if(number[i] === '0') 
+          count += 1
+      }
+      return (count === number.length) ? false : true
     }
-    return (count === number.length) ? true : false
+    else {
+      return false
+    }
   }
 
   const addPerson = (event) => {
     event.preventDefault()
-    if((typeof(newNumber) === 'number') && (allZeros(newNumber) === false)) {
+    if(validateNumber(newNumber) === true) {
       const check = persons.some(per => per.name === newPerson)
       if (!check) {
         const person = {
@@ -85,6 +90,7 @@ const Home = () => {
     }
     else {
       showMessage(<div id="snackbar">Enter valid Number</div>)
+      makeNull()
     }
   }
 

@@ -20,8 +20,8 @@ const PersonForm = (props) => {
                     <Form.Control onChange={props.number} value={props.newNumber || ''} placeholder="Phone Number" required />
                 </Col>
             </Row>
-            <Button className='btn-sm btn_icon' type='submit'><
-                i className="material-icons">add_circle</i>
+            <Button className='btn-sm btn_icon' type='submit' title="Add Contact">
+                <i className="material-icons">add_circle</i>
                 <span>Add</span>
             </Button>
       </Form>
