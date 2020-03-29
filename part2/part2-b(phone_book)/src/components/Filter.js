@@ -5,7 +5,7 @@ const Filter = (props) => {
     return (
         <Form>
             <Col sm="3">
-                <Form.Control className="filter" title="Search by Name" onChange={props.filters} placeholder="Search Contacts by Name" />
+                <Form.Control className="filter" title="Search by Name" onChange={props.filters} placeholder="Search Contacts ..." />
             </Col>
         </Form>
     )

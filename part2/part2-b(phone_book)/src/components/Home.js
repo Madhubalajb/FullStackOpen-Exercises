@@ -35,7 +35,7 @@ const Home = () => {
   }
 
   const validateNumber = (num) => {
-    if(typeof(num) === 'number') {
+    if(!isNaN(Number(num))) {
       const number = String(num)
       let count = 0
       for (let i = 0; i < number.length; i++) {
@@ -82,14 +82,14 @@ const Home = () => {
             makeNull()
           })
           .catch(error => {
-            showMessage(<div id="snackbar">Person {newPerson} has already been deleted</div>)
+            showMessage(<div id="snackbar">{newPerson} has already been deleted</div>)
             makeNull()
           })
         }
       }
     }
     else {
-      showMessage(<div id="snackbar">Enter valid Number</div>)
+      showMessage(<div id="snackbar">Please enter valid Number</div>)
       makeNull()
     }
   }
@@ -112,9 +112,12 @@ const Home = () => {
 
   const handleNewNumber = (event) => setNewNumber(event.target.value)
 
-  const handleFilter = (event) => setFilter(event.target.value)
-
-  let filteredItems = persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
+  const handleFilter = (event) => {
+    setFilter(event.target.value)
+    filteredItems = persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
+  }
+  
+  let filteredItems = persons
 
   return (
     <center className = "container">
