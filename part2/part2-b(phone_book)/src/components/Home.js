@@ -51,7 +51,7 @@ const Home = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    if(validateNumber(newNumber) === true) {
+    if(validateNumber(newNumber)) {
       const check = persons.some(per => per.name === newPerson)
       if (!check) {
         const person = {
