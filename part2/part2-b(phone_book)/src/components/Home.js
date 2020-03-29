@@ -112,12 +112,9 @@ const Home = () => {
 
   const handleNewNumber = (event) => setNewNumber(event.target.value)
 
-  const handleFilter = (event) => {
-    setFilter(event.target.value)
-    filteredItems = persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
-  }
-  
-  let filteredItems = persons
+  const handleFilter = (event) => setFilter(event.target.value)
+
+  let filteredItems = persons.filter(contact => contact.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1)
 
   return (
     <center className = "container">

@@ -8,7 +8,7 @@ const Persons = (props) => {
         <div key={per.id} className="contact">
             <i className="material-icons person">assignment_ind</i> 
             <span className="name">{per.name}</span> - <span className="number">{per.number}</span>
-            <i className="material-icons delete" title="Remove Contact" onClick={() => props.remove(per)}>delete</i>
+            <i className="material-icons delete" title="Delete Contact" onClick={() => props.remove(per)}>delete</i>
         </div>
         )
     })
