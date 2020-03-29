@@ -36,7 +36,13 @@ const Userservice = () => {
         setTimeout(() => {
           setMessage(null)
         }, 5000)
-      }
+    }
+
+    const makeNull = () => {
+        setName('')
+        setUsername('')
+        setPassword('')
+    }
 
     const handleName = (event) => setName(event.target.value)
     const handleUsername = (event) => setUsername(event.target.value)
@@ -51,19 +57,17 @@ const Userservice = () => {
             window.localStorage.setItem('logged_PhoneApp_User', JSON.stringify(user))
             phoneService.setToken(user.token)
             setUser(user)
-            setUsername('')
-            setPassword('')
+            makeNull()
             handleLoginNoModal()
-            showMessage(<div id="snackbar">Hi {user.username} :)</div>)
+            window.location.reload(false)
+            showMessage(<div id="snackbar">Hi {user.username} <i className="material-icons">sentiment_very_satisfied</i></div>)
         })
         .catch(error => {
             setUser('')
-            setUsername('')
-            setPassword('')
+            makeNull()
             handleLoginNoModal()
-            showMessage(<div id="snackbar">Sorry {user.username} :(</div>)
+            showMessage(<div id="snackbar">Sorry {user.username}, something went wrong <i className="material-icons">sentiment_very_dissatisfied</i></div>)
         })
-        window.location.reload(false)
     }
 
     const handleSignup = async (event) => {
@@ -73,19 +77,18 @@ const Userservice = () => {
         })
         .then(savedUser => {
             setUser('')
-            setName('')
-            setUsername('')
-            setPassword('')
+            makeNull()
             handleSignupNoModal()
-            showMessage(<div id="snackbar">User {savedUser.username} added :)</div>)
+            showMessage(<div id="snackbar">User {savedUser.username} added <i className="material-icons">sentiment_very_satisfied</i></div>)
         })
     }
 
     const logout = () => {
+        showMessage(<div id="snackbar">Bye {user.username} <i className="material-icons">sentiment_dissatisfied</i></div>)
         setUser('')
         window.localStorage.removeItem('logged_PhoneApp_User')
         phoneService.setToken('')
-        window.location.reload(false)
+        setTimeout(() => window.location.reload(false), 6000)
     }
 
     if(user === '') {
