@@ -29,56 +29,69 @@ const Home = () => {
     }, 5000)
   }
 
-  const addPerson = (event) => {
-    event.preventDefault();
-    const check = persons.some(per => per.name === newPerson)
-    if (!check) {
-      const person = {
-        name: newPerson,
-        number: newNumber,
-        id: persons.length + 1
-      }
-      personServices
-      .addData(person)
-      .then(returnedPersons => {
-        setPersons(persons.concat(returnedPersons))
-        showMessage(<div id="snackbar">Added contact {newPerson}</div>)
-        setNewPerson('')
-        setNewNumber('')
-      })
-      .catch(error => {
-        showMessage(<div id="snackbar">Person validation failed: Name & Number should be a length of minimum 3, 8 respectively. </div>)
-        setNewPerson('')
-        setNewNumber('')
-      })
+  const makeNull = () => {
+    setNewPerson('')
+    setNewNumber('')
+  }
+
+  const allZeros = (num) => {
+    const number = String(num)
+    let count = 0
+    for (let i = 0; i < number.length; i++) {
+      if(number[i] === '0') 
+        count += 1
     }
-    else {
-      let check = window.confirm(`${newPerson} is already exists, do you want to replace the number?`)
-      if(check) {
-        const update = persons.find(p => p.name === newPerson)
-        const updateObject = { ...update, number: newNumber}
-        personServices
-        .updateData(updateObject.id, updateObject)
-        .then(updated => {
-          setPersons(persons.map(pp => pp.id !== updateObject.id ? pp : updated))
-          showMessage(<div id="snackbar">Updated contact {updateObject.name}</div>)
-          setNewNumber('')
-          setNewPerson('')
+    return (count === number.length) ? true : false
+  }
+
+  const addPerson = (event) => {
+    event.preventDefault()
+    if(typeof(newNumber) === 'number' && allZeros(newNumber) === false) {
+      const check = persons.some(per => per.name === newPerson)
+      if (!check) {
+        const person = {
+          name: newPerson,
+          number: newNumber,
+          id: persons.length + 1
+        }
+        personServices.addData(person)
+        .then(returnedPersons => {
+          setPersons(persons.concat(returnedPersons))
+          showMessage(<div id="snackbar">Added contact {newPerson}</div>)
+          makeNull()
         })
         .catch(error => {
-          showMessage(<div id="snackbar">Person {newPerson} has already been deleted</div>)
-          setNewPerson('')
-          setNewNumber('')
+          showMessage(<div id="snackbar">Person validation failed: Name & Number should be a length of minimum 3, 8 respectively. </div>)
+          makeNull()
         })
       }
+      else {
+        let check = window.confirm(`${newPerson} is already exists, do you want to replace the number?`)
+        if(check) {
+          const update = persons.find(p => p.name === newPerson)
+          const updateObject = { ...update, number: newNumber}
+          personServices.updateData(updateObject.id, updateObject)
+          .then(updated => {
+            setPersons(persons.map(pp => pp.id !== updateObject.id ? pp : updated))
+            showMessage(<div id="snackbar">Updated contact {updateObject.name}</div>)
+            makeNull()
+          })
+          .catch(error => {
+            showMessage(<div id="snackbar">Person {newPerson} has already been deleted</div>)
+            makeNull()
+          })
+        }
+      }
+    }
+    else {
+      showMessage(<div id="snackbar">Enter valid Number</div>)
     }
   }
 
   const removePerson = (person) => {
     let check = window.confirm(`Wanna delete ${person.name}?`)
     if(check) {
-      personServices
-      .deleteData(person.id)
+      personServices.deleteData(person.id)
       .then(deleted => {
         setPersons(persons.filter(per => per.id !== person.id))
         showMessage(<div id="snackbar">Deleted contact {person.name}</div>)
