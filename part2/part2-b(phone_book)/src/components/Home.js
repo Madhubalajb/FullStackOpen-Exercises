@@ -13,13 +13,17 @@ const Home = () => {
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
   const [message, setMessage] = useState('')
-
-  let loggedUser
+  const [user, setUser] = useState('')
+  
   useEffect(() => {
-    loggedUser = window.localStorage.getItem('logged_PhoneApp_User')
+    const loggedUser = window.localStorage.getItem('logged_PhoneApp_User')
     if(loggedUser) {
-      personServices.getData()
-      .then(persons => setPersons(persons.filter(person => person.user.id === JSON.parse(loggedUser).id)))
+      const user = JSON.parse(loggedUser)
+      setUser(user)
+      personServices.getData().then(persons => setPersons(persons.filter(person => person.user.id === JSON.parse(loggedUser).id)))
+    }
+    else {
+      setUser('')
     }
   }, [])
 
@@ -27,7 +31,7 @@ const Home = () => {
     setMessage(message)
     setTimeout(() => {
       setMessage(null)
-    }, 5000)
+    }, 3000)
   }
 
   const makeNull = () => {
@@ -52,8 +56,9 @@ const Home = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    if(loggedUser === undefined) {
+    if(user === '') {
       showMessage(<div id="snackbar">Please Login / Signup before adding contacts</div>)
+      makeNull()
     }
     else if(validateNumber(newNumber)) {
       const check = persons.some(per => per.name === newPerson)

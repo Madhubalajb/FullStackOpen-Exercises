@@ -35,13 +35,15 @@ const Userservice = () => {
         setMessage(message)
         setTimeout(() => {
           setMessage(null)
-        }, 5000)
+        }, 3000)
     }
 
     const makeNull = () => {
         setName('')
         setUsername('')
         setPassword('')
+        handleLoginNoModal()
+        handleSignupNoModal()
     }
 
     const handleName = (event) => setName(event.target.value)
@@ -58,15 +60,13 @@ const Userservice = () => {
             phoneService.setToken(user.token)
             setUser(user)
             makeNull()
-            handleLoginNoModal()
-            window.location.reload(false)
-            showMessage(<div id="snackbar">Hi {user.username} <i className="material-icons">sentiment_very_satisfied</i></div>)
+            showMessage(<div id="snackbar">Hi {user.username} <i className="material-icons face">sentiment_very_satisfied</i></div>)
+            setTimeout(() => window.location.reload(false), 6000)
         })
         .catch(error => {
             setUser('')
             makeNull()
-            handleLoginNoModal()
-            showMessage(<div id="snackbar">Sorry {user.username}, something went wrong <i className="material-icons">sentiment_very_dissatisfied</i></div>)
+            showMessage(<div id="snackbar">Username / Password Invalid <i className="material-icons face">sentiment_very_dissatisfied</i></div>)
         })
     }
 
@@ -78,13 +78,12 @@ const Userservice = () => {
         .then(savedUser => {
             setUser('')
             makeNull()
-            handleSignupNoModal()
-            showMessage(<div id="snackbar">User {savedUser.username} added <i className="material-icons">sentiment_very_satisfied</i></div>)
+            showMessage(<div id="snackbar">User {savedUser.username} added <i className="material-icons face">sentiment_very_satisfied</i></div>)
         })
     }
 
     const logout = () => {
-        showMessage(<div id="snackbar">Bye {user.username} <i className="material-icons">sentiment_dissatisfied</i></div>)
+        showMessage(<div id="snackbar">Bye {user.username} <i className="material-icons face">sentiment_dissatisfied</i></div>)
         setUser('')
         window.localStorage.removeItem('logged_PhoneApp_User')
         phoneService.setToken('')

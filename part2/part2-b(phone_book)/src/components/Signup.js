@@ -4,7 +4,7 @@ import {Modal, Button, Form} from 'react-bootstrap'
 const Signup = (props) => {
     return (
         <Modal show={props.show} onHide={props.close}>
-            <Modal.Header closeButton>Sign Up</Modal.Header>
+            <Modal.Header closeButton><b>Signup</b></Modal.Header>
             <Modal.Body>
                 <Form onSubmit={props.signup}>
                     <Form.Control type="text" placeholder="Name" onChange={props.name} required/>
