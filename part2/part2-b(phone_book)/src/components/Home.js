@@ -46,7 +46,7 @@ const Home = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
-    if(typeof(newNumber) === 'number' && allZeros(newNumber) === false) {
+    if((typeof(newNumber) === 'number') && (allZeros(newNumber) === false)) {
       const check = persons.some(per => per.name === newPerson)
       if (!check) {
         const person = {

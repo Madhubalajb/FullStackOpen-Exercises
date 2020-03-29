@@ -12,15 +12,15 @@ const About = () => {
                 <h2>Phonebook</h2>
                 <div className="logos">
                     <span className="logo react">
-                      <img src={react} alt="Reactjs" />
+                      <img src={react} alt="Reactjs" title="React" />
                     </span>
                     <span className="plus">+</span>
                     <span className="logo node">
-                        <img src={node} alt="Nodejs" />
+                        <img src={node} alt="Nodejs" title="Node JS" />
                     </span>
                     <span className="plus">+</span>
                     <span className="logo mongodb">
-                        <img src={mongodb} alt="Mongodb" />
+                        <img src={mongodb} alt="Mongodb" title="mongo DB" />
                     </span>
                 </div>
                 <ol className="stack">
