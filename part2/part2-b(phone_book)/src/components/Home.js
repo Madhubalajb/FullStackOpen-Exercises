@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Card, Row, Col } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import logo from '../Images/phone-book.png'
 import Filter from './Filter'
 import Persons from './Persons'
@@ -137,15 +137,13 @@ const Home = () => {
 
     <div className = "row main-row">
         <Card className = "col-sm-6">
-        <h2>Add a contact</h2>
-        <PersonForm add = {addPerson} person = {handleNewPerson} number = {handleNewNumber} newNumber={newNumber} newPerson={newPerson}/>
+          <h2>Add a contact</h2>
+          <PersonForm add = {addPerson} person = {handleNewPerson} number = {handleNewNumber} newNumber={newNumber} newPerson={newPerson}/>
         </Card>
 
         <Card className = "col-sm-6">
-        <Row>
-            <Col><h2>Contacts</h2></Col>
-        </Row>
-        <Persons filteredItems={filteredItems} remove={removePerson} />
+          <h2>Contacts</h2>
+          <Persons filteredItems={filteredItems} remove={removePerson} />
         </Card>
     </div>
     </center>
