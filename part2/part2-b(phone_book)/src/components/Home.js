@@ -127,25 +127,29 @@ const Home = () => {
 
   return (
     <center className = "container">
-    <Notification msg = {message} />
+      <Notification msg = {message} />
 
-    <div>
-        <img className="phonebook_logo" src={logo} alt="Phonebook Logo" />
-        <h2>Phonebook</h2>
-        <Filter filters = {handleFilter} />
-    </div>
+      <div>
+          <img className="phonebook_logo" src={logo} alt="Phonebook Logo" />
+          <h2>Phonebook</h2>
+          <Filter filters = {handleFilter} />
+      </div>
 
-    <div className = "row main-row">
-        <Card className = "col-sm-6">
-          <h2>Add a contact</h2>
-          <PersonForm add = {addPerson} person = {handleNewPerson} number = {handleNewNumber} newNumber={newNumber} newPerson={newPerson}/>
-        </Card>
+      <div className = "row main-row">
+          <Card className = "col-sm-6">
+            <h2>Add a contact</h2>
+            <PersonForm add = {addPerson} person = {handleNewPerson} number = {handleNewNumber} newNumber={newNumber} newPerson={newPerson}/>
+          </Card>
 
-        <Card className = "col-sm-6">
-          <h2>Contacts</h2>
-          <Persons filteredItems={filteredItems} remove={removePerson} />
-        </Card>
-    </div>
+          <Card className = "col-sm-6">
+            <h2>Contacts</h2>
+            <Persons filteredItems={filteredItems} remove={removePerson} />
+          </Card>
+      </div>
+      <div className="footer">
+          <a className="fab fa-github" href="https://github.com/Madhubalajb/Expense-Split" rel="noopener noreferrer" target="_blank" />
+          built by <a href="https://madhubalajb.github.io/" rel="noopener noreferrer" target="_blank">madhubala jayakumaran</a>
+      </div>
     </center>
   )
 }
