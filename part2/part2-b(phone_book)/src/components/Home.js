@@ -147,7 +147,7 @@ const Home = () => {
           </Card>
       </div>
       <div className="footer">
-          <a className="fab fa-github" href="https://github.com/Madhubalajb/Expense-Split" rel="noopener noreferrer" target="_blank" />
+          <a className="fab fa-github" href="https://github.com/Madhubalajb/FullStackOpen-Exercises/tree/master/part2/part2-b(phone_book)" rel="noopener noreferrer" target="_blank" />
           built by <a href="https://madhubalajb.github.io/" rel="noopener noreferrer" target="_blank">madhubala jayakumaran</a>
       </div>
     </center>
